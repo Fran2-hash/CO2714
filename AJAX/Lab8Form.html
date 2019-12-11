@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> </title>
+		<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
+		<style>
+			input.error {
+				border: 2px dashed red;
+			}
+			label.error{
+				font-family: "times new roman";
+				color: #f00;
+				font-style: italic;
+			}
+
+		</style>
+	</head>
+	<body>
+		<form id="myValidatedForm">
+			<label for="firstname">First name:</label><br><input id="firstname" name="firstname" type="text"/><br>
+			<label for="lastname">Last name:</label><br><input id="lastname" name="lastname" type="text"/><br>
+			<label for="email">Email address:</label><br><input id="email" name="email" type="text"/><br>
+			<label for="password">Password:</label><br><input id="password" name="password" type="password"/><br>
+			<label for="confirm_password">Confirm password:</label><br><input id="confirm_password" name="confirm_password" type="password"/><br>	
+			<input type="submit">
+		</form>
+		<script>
+		$.validator.addMethod(
+				"pattern",
+				function(value, element, regexp) {
+					var re = new RegExp(regexp);
+					return this.optional(element) || re.test(value);
+				}
+		);
+		  $("#myValidatedForm").validate({
+			// Specify validation rules
+			rules: {
+			  firstname: {
+				required: true,
+				pattern: /^[a-zA-Z0-9]{5,25}$/
+			  },
+			  lastname: "required",
+			  email: {
+				required: true,
+				email: true
+			  },
+			  password: {
+				required: true,
+				minlength: 5,
+			  },
+			  confirm_password:{
+			    required: true,
+			    minlength: 5,
+			    equalTo: "#password"
+			}
+			},
+			// Specify validation error messages
+			messages: {
+			  firstname: {
+				required: "Please enter your firstname",
+				pattern: "must be between 5 and 25 in length"
+			  },
+			  lastname: "Please enter your lastname",
+			  password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long"
+			  },
+			  confirm_password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long",
+				equalTo: "Your passwords do not match"
+			  },
+			  email: "Please enter a valid email address"
+			}
+		  });
+		
+
+		</script>
+	</body>
+</html> 

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+<title>jQuery Temperature Converter</title>
+<style>
+#outPutDegrees {
+	font-size:1.6em;
+}
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+var tempState = "F";
+$(document).ready(function(){
+	$("#mytoggle").click(function(){
+		if (tempState === "F")
+		{
+			tempState = "C";
+			$("#currentState").html("C to F");
+			$("#mytoggle").html("C->F");
+		}
+		else
+		{
+			tempState = "F";
+			$("#currentState").html("F to C");
+			$("#mytoggle").html("F->C");
+		}
+	});
+
+    $("#tempInput").keyup(function(){
+		$('#message').empty();
+		var inputTemp = parseFloat($('#tempInput').val());
+		if (tempState === "F")
+		{
+			var converted = (inputTemp - 32) / 1.8; 
+			if (inputTemp <= 32)
+			{
+				$('#message').html("Damn my tongues stuck to the lamppost");
+				$('#tempInput').css("background-color","#6af");
+			}
+			else if (inputTemp > 32 && inputTemp <= 50)
+			{
+				$('#message').html("Brrr.. bit chilly!");
+				$('#tempInput').css("background-color","#6Fa");
+			}
+			else if (inputTemp > 50 && inputTemp <= 70)
+			{
+				$('#message').html("Just nice!");
+				$('#tempInput').css("background-color","#ff6");
+			}
+			else if (inputTemp > 70)
+			{
+				$('#message').html("Scorchio!");
+				$('#tempInput').css("background-color","#fa6");
+			}
+			$('#outPutDegrees').empty();
+			$('#outPutDegrees').append(converted+" degrees C");
+		}
+		else
+		{
+			var converted = (inputTemp *1.8) + 32; 
+			if (inputTemp <= 0)
+			{
+				$('#message').html("Damn my tongues stuck to the lamppost");
+				$('#tempInput').css("background-color","#6af");
+			}
+			else if (inputTemp > 0 && inputTemp <= 10)
+			{
+				$('#message').html("Brrr.. bit chilly!");
+				$('#tempInput').css("background-color","#6Fa");
+			}
+			else if (inputTemp > 10 && inputTemp <= 22)
+			{
+				$('#message').html("Just nice!");
+				$('#tempInput').css("background-color","#ff6");
+			}
+			else if (inputTemp > 22)
+			{
+				$('#message').html("Scorchio!");
+				$('#tempInput').css("background-color","#fa6");
+			}
+			$('#outPutDegrees').empty();
+			$('#outPutDegrees').append(converted+" degrees F");
+		
+		}
+	});
+});
+</script>
+</head>
+<body>
+<div class="container">
+<h1>Jonathan's jQuery temperature convertor</h1>
+<h2 id="currentState">F to C</h2>
+	Input: <input type="textbox" id="tempInput" name="tempInput"/>
+	<br>
+	Output: <p id="outPutDegrees"></p>
+	<p id="message"></p>
+	<button id="mytoggle">F->C</button>
+</div>
+</body>
+</html>

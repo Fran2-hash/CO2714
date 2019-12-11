@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+<title>javascript_file</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+		$("#addto").click(function(){
+		var newItem = "<li>"+$("#inputbox").val()+"</li>";
+			$("#mylist").append(newItem);
+		});
+		$("#clearlist").click(function(){
+			$("#mylist").empty();
+		});
+	});
+
+$(document).ready(function(){
+    $("#fah").keyup(function(){
+		$('#message').empty();
+		var ftemp = parseFloat($('#fah').val());
+		var cent = (ftemp - 32) / 1.8; 
+		$('#cent').empty();
+		$('#cent').append(cent+" ˚C");
+ });
+});
+</script>
+</head>
+<body>
+
+<h1>Add things to a list</h1>
+<input type="textbox" id="inputbox"/>
+<button id="addto">Click to add</button>
+<button id="clearlist">Click to clear list</button>
+<ul id="mylist">
+
+<h1>jQuery temperature convertor</h1>
+<h2>F to C</h2>
+	Fahrenheit: <input type="textbox" id="fah" name="fah"/>
+<br>
+	Centigrade: <p id="cent"></p>
+</body>
+
+</html>

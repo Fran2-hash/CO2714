@@ -1,0 +1,114 @@
+:root {
+    /* Colors */
+    --border: #c9ddff;
+    --hoverBorder: #2cf6b3;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #eee;
+    font-family: Arial, sans-serif;
+}
+
+/* Index.php */
+#index {
+    width: 70%;
+    margin: 10px auto;
+    text-align: center;
+}
+#index h1 {
+    margin-bottom: 10px;
+}
+#index ul {
+    list-style-type: none;
+    
+}
+#index ul li {
+    display: inline-block;
+    padding: 5px;
+    
+}
+
+/* Register.php*/
+/* Original idea of from design is https://www.w3schools.com/css/tryit.asp?filename=trycss_form_responsive */
+.container {
+    width: 40%;
+    padding: 20px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+/* Grid setup
+.col-25 -> for 25% of width
+.col-75 -> for 75% of width
+*/
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+/* Clearing floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.container h1 {
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+.container label {
+    text-transform: uppercase;
+    float: left;
+}
+.container .user_action {
+    width: 30%;
+    margin-top: 25px;
+}
+.user_data {
+    width: 250px;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    padding: 2px;
+}
+.user_data:hover,
+.user_data:focus {
+    border: 2px solid var(--hoverBorder);
+}
+.user_action {
+    border: 2px solid #454343;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+.user_action:hover,
+.user_action:focus {
+    border: 2px solid var(--hoverBorder);
+    transition: all 0.3s ease-in;
+}
+
+#btn_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#btn_container a {
+    margin-top: 10px;
+}

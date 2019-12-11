@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>FrontBook</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script>
+    <!-- your JavaScript / jQuery code will go here -->
+    
+    
+    $(document).ready(function(){
+        var newComment;
+        $("#addComment").click(function(){
+            newComment = $("#newComment").val();
+            $("#comments").append("<div class=\"comment\">"+newComment+"</div>");
+            var dataString = "com=" + newComment;
+            $.ajax({
+                url: "insertNew.php",
+                type: "POST",
+                data: dataString,
+                success: function(data) {
+                    console.log("success");
+                }
+            });
+        });
+    });
+
+</script>
+ 
+  </head>
+  <body>
+<h1>welcome to frontbook</h1>
+<p>The text area above is outside the form element, but should still be a part of the form.</p>
+
+<p><b>Note:</b> The form attribute is not supported.</p>
+    <!-- your page content will go here -->
+
+<br>
+
+
+  <textarea rows="4" cols="50" id ="newComment"></textarea>
+  
+  <br><br>
+  <input type="submit" value="addComment" id="addComment">
+ 
+ <div id ="comments"></div>
+
+  </body>
+</html>
+
+
+
